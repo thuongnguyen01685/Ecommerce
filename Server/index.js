@@ -4,12 +4,14 @@ const app = express();
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const userRoutes = require('./routes/user');
+const adminRoutes = require('./routes/admin/admin');
 
 env.config();
 
 app.use(express.json());
 app.use('/api', userRoutes);
-// app.use(bodyParser());
+app.use('/api', adminRoutes);
+app.use(bodyParser.urlencoded({ extended: false }));
 
 
 app.get('/', (req, res, next) =>{
