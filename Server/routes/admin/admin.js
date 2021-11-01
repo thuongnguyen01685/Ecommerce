@@ -11,4 +11,9 @@ router.post("/admin/signin", validateSigninRequest, isRequestValidated, signin);
 
 router.post("/admin/signup", validateSignupRequest, isRequestValidated, signup);
 
+const { requireSignin } = require("../../common-middleware/index");
+router.post("/admin/profile", requireSignin, (req, res) => {
+  res.status(200).json({ user: "profile" });
+});
+
 module.exports = router;
