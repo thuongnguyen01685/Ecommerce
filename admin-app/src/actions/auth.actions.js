@@ -52,3 +52,12 @@ export const isUserLoggedin = () => {
     }
   };
 };
+
+export const signout = () => {
+  return async (dispatch) => {
+    localStorage.clear();
+    dispatch({
+      type: authConstants.LOGOUT_REQUEST,
+    });
+  };
+};
