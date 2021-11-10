@@ -7,7 +7,7 @@ import Input from "../../components/UI/Input";
 const Category = (props) => {
   const category = useSelector((state) => state.category);
   const [categoryName, setCategoryName] = useState(" ");
-  const [parentId, setParentId] = useState(" ");
+  const [parentCategoryId, setParentCategoryId] = useState("");
   const [categoryImage, setCategoryImage] = useState(" ");
   const [show, setShow] = useState(false);
   const dispatch = useDispatch();
@@ -19,7 +19,7 @@ const Category = (props) => {
     const form = new FormData();
 
     form.append("name", categoryName);
-    form.append("parentId", parentId);
+    form.append("parentId", parentCategoryId);
     form.append("categoryImage", categoryImage);
     dispatch(addCategory(form));
     // const cat = {
@@ -93,8 +93,8 @@ const Category = (props) => {
           />
           <select
             className="form-control"
-            value={parentId}
-            onChange={(e) => setParentId(e.target.value)}>
+            value={parentCategoryId}
+            onChange={(e) => setParentCategoryId(e.target.value)}>
             <option>Select category</option>
             {createCategoryList(category.categories).map((option) => {
               return (
