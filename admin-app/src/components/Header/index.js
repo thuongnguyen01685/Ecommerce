@@ -3,6 +3,7 @@ import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, Link } from "react-router-dom";
 import { signout } from "../../actions";
+import "./style.css";
 
 const Header = (props) => {
   const auth = useSelector((state) => state.auth);
