@@ -8,6 +8,7 @@ const categoryRoutes = require("./routes/category");
 const productRoutes = require("./routes/product");
 const cartRoutes = require("./routes/cart");
 const initialDataRoute = require("./routes/admin/initialData");
+const pageRoute = require("./routes/admin/page");
 const path = require("path");
 const cors = require("cors");
 
@@ -23,6 +24,7 @@ app.use("/api", categoryRoutes);
 app.use("/api", productRoutes);
 app.use("/api", cartRoutes);
 app.use("/api", initialDataRoute);
+app.use("/api", pageRoute);
 
 app.get("/", (req, res, next) => {
   res.status(200).json({
