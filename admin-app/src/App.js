@@ -20,8 +20,10 @@ function App() {
     if (!auth.authenticate) {
       dispatch(isUserLoggedin());
     }
-    dispatch(getInitialData());
-  }, []);
+    if (auth.authenticate) {
+      dispatch(getInitialData());
+    }
+  }, [auth.authenticate]);
   return (
     <div className="App">
       <Switch>

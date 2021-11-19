@@ -7,6 +7,7 @@ import Modal from "../../../components/UI/Modal";
 const UpdateCategoriesModal = (props) => {
   const {
     show,
+    onSubmit,
     size,
     handleClose,
     modalTitle,
@@ -19,6 +20,7 @@ const UpdateCategoriesModal = (props) => {
     <Modal
       show={show}
       handleClose={handleClose}
+      onSubmit={onSubmit}
       modalTitle={modalTitle}
       size={size}>
       <Row>
