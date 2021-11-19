@@ -73,6 +73,7 @@ const NewPage = (props) => {
       form.append("products", product);
     });
     dispatch(createPage(form));
+    console.log(form);
     setCreateModal(false);
   };
   const renderCreatePageModal = () => {
