@@ -10,7 +10,7 @@ import {
   DropdownMenu,
 } from "../MaterialUI";
 import { useDispatch, useSelector } from "react-redux";
-import { login } from "../../actions";
+import { login, signout } from "../../actions";
 
 const Header = (props) => {
   const [loginModal, setLoginModal] = useState(false);
@@ -22,6 +22,10 @@ const Header = (props) => {
   const userLogin = () => {
     dispatch(login({ email, password }));
   };
+
+  const logout = () => {
+    dispatch(signout());
+  }
 
   useEffect(() => {
     console.log(auth);
@@ -37,15 +41,15 @@ const Header = (props) => {
         menus={[
           { label: "My Profile", href: "", icon: null },
           { label: "SuperCoin Zone", href: "", icon: null },
-          { label: "Shop Plus Zone", href: "", icon: null },
-          { label: "Orders", href: "", icon: null },
-          { label: "Wishlist", href: "", icon: null },
-          { label: "My Chats", href: "", icon: null },
-          { label: "Coupons", href: "", icon: null },
-          { label: "Rewards", href: "", icon: null },
+          // { label: "Shop Plus Zone", href: "", icon: null },
+          // { label: "Orders", href: "", icon: null },
+          // { label: "Wishlist", href: "", icon: null },
+          // { label: "My Chats", href: "", icon: null },
+          // { label: "Coupons", href: "", icon: null },
+          // { label: "Rewards", href: "", icon: null },
           { label: "Notifications", href: "", icon: null },
           { label: "Gift Cards", href: "", icon: null },
-          { label: "Logout", href: "", icon: null },
+          { label: "Logout", href: "", icon: null, onClick: logout },
         ]}
       />
     );
