@@ -4,8 +4,9 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import ProductListPage from "./containers/ProductListPage";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { isUserLoggedin } from "./actions";
+import { isUserLoggedin, updateCart } from "./actions";
 import ProductDetailsPage from "./containers/ProductDetailsPage";
+import CartPage from "./containers/CartPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -17,11 +18,16 @@ function App() {
     }
   }, [auth.authenticate]);
 
+  useEffect(() => {
+    dispatch(updateCart);
+  }, []);
+
   return (
     <div className="App">
       <Router>
         <Switch>
           <Route path="/" exact component={HomePage} />
+          <Route path="/cart" component={CartPage} />
           <Route
             path="/:productSlug/:productId/p"
             component={ProductDetailsPage}
