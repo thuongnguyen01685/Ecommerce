@@ -42,11 +42,9 @@ const ProductPage = (props) => {
         }}>
         {page.products &&
           page.products.map((product, index) => (
-            <Card
-              key={index}
-              style={{ width: "300px", height: "200px", margin: "5px" }}>
+            <Card key={index} style={{ width: "400px", margin: "5px" }}>
               <img
-                style={{ width: "80%", height: "90%", padding: "5px" }}
+                style={{ width: "100%", padding: "5px" }}
                 src={product.img}
                 alt=""
               />
