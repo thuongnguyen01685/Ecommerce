@@ -63,7 +63,7 @@ const MaterialButton = (props) => {
   return (
     <div
       style={{
-        width: "90%",
+        width: "100%",
         ...props.style,
       }}>
       <button
@@ -90,11 +90,14 @@ const DropdownMenu = (props) => {
           {props.menus &&
             props.menus.map((item, index) => (
               <li key={index}>
-                <a onClick = {(e) => {
+                <a
+                  onClick={(e) => {
                     e.preventDefault();
-                    item.onClick && item.onClick()
-                     }} 
-                    href={item.href}>{item.label}</a>
+                    item.onClick && item.onClick();
+                  }}
+                  href={item.href}>
+                  {item.label}
+                </a>
               </li>
             ))}
         </ul>

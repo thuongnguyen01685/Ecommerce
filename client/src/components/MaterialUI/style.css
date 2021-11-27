@@ -38,6 +38,7 @@
 .materialInput {
     width: 90%;
     height: 30px;
+    min-width: 300px;
     border-bottom: 2px solid #2874f0;
     position: relative;
     /* background-color: red; */
