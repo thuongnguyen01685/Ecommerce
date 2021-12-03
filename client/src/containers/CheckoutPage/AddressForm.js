@@ -86,7 +86,7 @@ const AddressForm = (props) => {
       } else {
         _address = user.address.slice(user.address.length - 1)[0];
       }
-
+      // const address = user.address.slice(user.address.length - 1)[0];
       props.onSubmitForm(_address);
     }
   }, [user.address]);

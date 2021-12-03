@@ -16,6 +16,7 @@ const CartPage = (props) => {
   // const cartItems = cart.cartItems;
   const [cartItems, setCartItems] = useState(cart.cartItems);
   const dispatch = useDispatch();
+
   useEffect(() => {
     setCartItems(cart.cartItems);
   }, [cart.cartItems]);
@@ -26,14 +27,28 @@ const CartPage = (props) => {
     }
   }, [auth.authenticate]);
 
-  const onQuantityIncrement = (_id) => {
+  const onQuantityIncrement = (_id, qty) => {
     const { name, price, img } = cartItems[_id];
     dispatch(addToCart({ _id, name, price, img }, 1));
   };
-  const onQuantityDecrement = (_id) => {
+  const onQuantityDecrement = (_id, qty) => {
     const { name, price, img } = cartItems[_id];
     dispatch(addToCart({ _id, name, price, img }, -1));
   };
+  if (props.onlyCartItems) {
+    return (
+      <>
+        {Object.keys(cartItems).map((key, index) => (
+          <CartItem
+            key={index}
+            cartItem={cartItems[key]}
+            onQuantityInc={onQuantityIncrement}
+            onQuantityDec={onQuantityDecrement}
+          />
+        ))}
+      </>
+    );
+  }
   return (
     <Layout>
       <div className="cartContainer" style={{ alignItems: "flex-start" }}>
