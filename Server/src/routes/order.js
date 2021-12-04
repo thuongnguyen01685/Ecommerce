@@ -4,6 +4,6 @@ const { addOrder, getOrders } = require("../controller/order");
 const router = express.Router();
 
 router.post("/addOrder", requireSignin, userMiddleware, addOrder);
-router.post("/getOrders", requireSignin, userMiddleware, getOrders);
+router.get("/getOrders", requireSignin, userMiddleware, getOrders);
 
 module.exports = router;
