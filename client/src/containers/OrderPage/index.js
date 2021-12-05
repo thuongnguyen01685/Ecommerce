@@ -1,7 +1,10 @@
 import React, { useEffect } from "react";
+import { BiRupee } from "react-icons/bi";
+import { IoIosArrowForward } from "react-icons/io";
 import { useDispatch, useSelector } from "react-redux";
 import { getOrders } from "../../actions";
 import Layout from "../../components/Layout";
+import { Breed } from "../../components/MaterialUI";
 import Card from "../../components/UI/Card";
 import { generatePublicUrl } from "../../urlConfig";
 import "./style.css";
@@ -15,30 +18,32 @@ const OrderPage = (props) => {
   }, []);
   return (
     <Layout>
+      <div style={{ maxWidth: "1160px", margin: "5px auto" }}>
+        <Breed
+          breed={[
+            { name: "Home", href: "/" },
+            { name: "My Account", href: "/account" },
+            { name: "My Orders", href: "/account/orders" },
+          ]}
+          breedIcon={<IoIosArrowForward />}
+        />
+      </div>
       {user.orders.map((order) => {
         return order.items.map((item) => (
-          <Card style={{ maxWidth: "1200px", margin: "5px auto" }}>
+          <Card style={{ margin: "5px 0" }}>
             <div className="orderItemContainer">
-              <div
-                style={{
-                  width: 80,
-
-                  overflow: "hidden",
-                  textAlign: "center",
-                }}>
+              <div className="orderImgContainer">
                 <img
-                  style={{ maxWidth: 80, maxHeight: 80 }}
+                  className="orderImg"
                   src={generatePublicUrl(item.productId.productPictures[0].img)}
                 />
               </div>
-              <div
-                style={{
-                  display: "flex",
-                  flex: 1,
-                  justifyContent: "space-between",
-                }}>
-                <div style={{ width: 300 }}>{item.productId.name}</div>
-                <div>{item.payablePrice}</div>
+              <div className="orderRow">
+                <div className="orderName">{item.productId.name}</div>
+                <div className="orderPrice">
+                  <BiRupee />
+                  {item.payablePrice}
+                </div>
                 <div>{order.paymentStatus}</div>
               </div>
             </div>
