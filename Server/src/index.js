@@ -11,6 +11,7 @@ const initialDataRoute = require("./routes/admin/initialData");
 const pageRoute = require("./routes/admin/page");
 const addressRoute = require("./routes/address");
 const orderRoute = require("./routes/order");
+const adminOrderRoute = require("./routes/admin/order.routes");
 const path = require("path");
 const cors = require("cors");
 
@@ -29,6 +30,7 @@ app.use("/api", initialDataRoute);
 app.use("/api", pageRoute);
 app.use("/api", addressRoute);
 app.use("/api", orderRoute);
+app.use("/api", adminOrderRoute);
 
 app.get("/", (req, res, next) => {
   res.status(200).json({
