@@ -35,6 +35,11 @@ router.get("/products/:slug", getProductsBySlug);
 //router.get("/category/getcategory", getCategories);
 
 router.get("/product/:productId", getProductDetailsById);
-router.get("/product/getProducts", requireSignin, adminMiddleware, getProducts);
+router.post(
+  "/product/getProducts",
+  requireSignin,
+  adminMiddleware,
+  getProducts
+);
 
 module.exports = router;

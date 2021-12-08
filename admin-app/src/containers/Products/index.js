@@ -23,6 +23,10 @@ const Products = (props) => {
   const dispatch = useDispatch();
 
   const handleClose = () => {
+    setShow(false);
+  };
+
+  const submitProductForm = () => {
     const form = new FormData();
     form.append("name", name);
     form.append("quantity", quantity);
@@ -34,8 +38,7 @@ const Products = (props) => {
       form.append("productPicture", pic);
     }
 
-    dispatch(addProduct(form));
-    setShow(false);
+    dispatch(addProduct(form)).then(() => setShow(false));
   };
   const renderProducts = () => {
     return (
@@ -91,8 +94,10 @@ const Products = (props) => {
       <Modal
         show={show}
         handleClose={handleClose}
-        modalTitle={"Add new Product"}>
+        modalTitle={"Add new Product"}
+        onSubmit={submitProductForm}>
         <Input
+          label="Name"
           value={name}
           placeholder={`Product Name`}
           onChange={(e) => setName(e.target.value)}
@@ -156,7 +161,8 @@ const Products = (props) => {
         size="lg"
         show={productDetailModal}
         handleClose={handleCloseProductDetailsModal}
-        modalTitle={"Product Details"}>
+        modalTitle={"Product Details"}
+        onSubmit={handleCloseProductDetailsModal}>
         <Row>
           <Col md="6">
             <label className="key">Name</label>
