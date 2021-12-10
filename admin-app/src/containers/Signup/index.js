@@ -5,6 +5,7 @@ import Input from "../../components/UI/Input";
 import { Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { signup } from "../../actions";
+import { useEffect } from "react";
 
 const Signup = (props) => {
   const auth = useSelector((state) => state.auth);
@@ -16,6 +17,15 @@ const Signup = (props) => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (!user.loading) {
+      setFirstName("");
+      setLastName("");
+      setEmail("");
+      setPassword("");
+    }
+  }, [user.loading]);
 
   const userSignup = (e) => {
     e.preventDefault();
